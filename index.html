@@ -20,7 +20,6 @@
 <!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg navbar-dark custom-navbar fixed-top">
   <div class="container-fluid position-relative">
-
     <!-- LOGO -->
     <a class="navbar-brand d-flex align-items-center logo-left" href="./index.html">
       <img src="./asset/logo.png" alt="Logo" width="45" height="45" class="rounded-circle">
@@ -31,16 +30,8 @@
 
     <!-- DERECHA -->
     <div class="d-flex align-items-center ms-auto gap-3">
-
-      <!-- BUSCAR -->
       <i class="bi bi-search icon-nav" id="btnBuscar"></i>
-
-      <!-- LOGIN -->
-      <a href="./pages/login.html">
-        <i class="bi bi-person icon-nav"></i>
-      </a>
-
-      <!-- HAMBURGUESA -->
+      <a href="./pages/login.html"><i class="bi bi-person icon-nav"></i></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuNav">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -56,7 +47,6 @@
         <li class="nav-item"><a class="nav-link" href="./pages/login.html">Login</a></li>
       </ul>
     </div>
-
   </div>
 </nav>
 
@@ -68,71 +58,161 @@
 <!-- BANNER -->
 <header class="banner">
   <div class="banner-contenido">
-
     <div class="banner-texto">
       <h1>Conocé Nuestro Mundo</h1>
       <p>Explorá el estilo urbano, identidad propia y prendas que marcan la diferencia.</p>
     </div>
-
     <div class="banner-img">
       <img src="./asset/banner.png" alt="Colección The Haze Club">
     </div>
-
   </div>
 </header>
 
 <!-- PRODUCTOS -->
 <main class="container mb-5">
-
   <section>
     <h2 class="text-center mb-4">Productos Destacados</h2>
-
     <div class="row g-4">
 
+      <!-- Producto 1 -->
       <div class="col-md-4">
         <div class="producto-card">
-          <img src="./asset/images (1).jpg">
+          <img src="./asset/images (1).jpg" alt="Remeras Oversize">
           <div class="p-3">
             <h5>Remeras Oversize</h5>
             <p>Diseños exclusivos con estilo urbano.</p>
+            <button class="btn btn-success btn-add-cart" data-nombre="Remeras Oversize" data-precio="1500">Agregar al carrito</button>
           </div>
         </div>
       </div>
 
+      <!-- Producto 2 -->
       <div class="col-md-4">
         <div class="producto-card">
-          <img src="./asset/gorraaaa22.jpg">
+          <img src="./asset/gorraaaa22.jpg" alt="Gorras">
           <div class="p-3">
             <h5>Gorras</h5>
             <p>Complementos ideales para tu outfit.</p>
+            <button class="btn btn-success btn-add-cart" data-nombre="Gorras" data-precio="800">Agregar al carrito</button>
           </div>
         </div>
       </div>
 
+      <!-- Producto 3 -->
       <div class="col-md-4">
         <div class="producto-card">
-          <img src="./asset/descarga (5).jpg">
+          <img src="./asset/descarga (5).jpg" alt="Buzos">
           <div class="p-3">
             <h5>Buzos</h5>
             <p>Comodidad y estilo streetwear.</p>
+            <button class="btn btn-success btn-add-cart" data-nombre="Buzos" data-precio="3000">Agregar al carrito</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Producto 4 -->
+      <div class="col-md-4">
+        <div class="producto-card">
+          <img src="./asset/pantalon.jpg" alt="Pantalones">
+          <div class="p-3">
+            <h5>Pantalones</h5>
+            <p>Urban streetwear con fit moderno.</p>
+            <button class="btn btn-success btn-add-cart" data-nombre="Pantalones" data-precio="2200">Agregar al carrito</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Producto 5 -->
+      <div class="col-md-4">
+        <div class="producto-card">
+          <img src="./asset/zapatillas.jpg" alt="Zapatillas">
+          <div class="p-3">
+            <h5>Zapatillas</h5>
+            <p>Comodidad y estilo para la calle.</p>
+            <button class="btn btn-success btn-add-cart" data-nombre="Zapatillas" data-precio="4500">Agregar al carrito</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Producto 6 -->
+      <div class="col-md-4">
+        <div class="producto-card">
+          <img src="./asset/campera.jpg" alt="Camperas">
+          <div class="p-3">
+            <h5>Camperas</h5>
+            <p>Protección y estilo urbano.</p>
+            <button class="btn btn-success btn-add-cart" data-nombre="Camperas" data-precio="3500">Agregar al carrito</button>
           </div>
         </div>
       </div>
 
     </div>
   </section>
-
 </main>
+
+<!-- CARRITO -->
+<div id="carrito" class="carrito">
+  <h4>Tu Carrito</h4>
+  <ul id="lista-carrito"></ul>
+  <p>Total: $<span id="total">0</span></p>
+  <button id="vaciar-carrito" class="btn btn-danger">Vaciar carrito</button>
+  <button id="cerrar-carrito" class="btn btn-secondary">Cerrar</button>
+</div>
 
 <!-- FOOTER -->
 <footer class="bg-dark text-white text-center py-4">
-  <p class="mb-2">© 2026 The Haze Club — Streetwear</p>
+  <p class="mb-2">
+    © 2026 The Haze Club — Streetwear | 
+    <a href="./pages/terminos.html" class="text-white">Términos y condiciones</a>
+  </p>
 </footer>
 
 <!-- JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
 <script>
+  // Carrito
+  const carrito = document.getElementById('carrito');
+  const listaCarrito = document.getElementById('lista-carrito');
+  const total = document.getElementById('total');
+  const botonesAgregar = document.querySelectorAll('.btn-add-cart');
+  const btnVaciar = document.getElementById('vaciar-carrito');
+  const btnCerrar = document.getElementById('cerrar-carrito');
+
+  let productosCarrito = [];
+
+  botonesAgregar.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const nombre = btn.dataset.nombre;
+      const precio = parseFloat(btn.dataset.precio);
+
+      productosCarrito.push({ nombre, precio });
+      actualizarCarrito();
+      carrito.classList.add('mostrar');
+    });
+  });
+
+  btnVaciar.addEventListener('click', () => {
+    productosCarrito = [];
+    actualizarCarrito();
+  });
+
+  btnCerrar.addEventListener('click', () => {
+    carrito.classList.remove('mostrar');
+  });
+
+  function actualizarCarrito() {
+    listaCarrito.innerHTML = '';
+    let suma = 0;
+    productosCarrito.forEach(item => {
+      const li = document.createElement('li');
+      li.textContent = `${item.nombre} - $${item.precio}`;
+      listaCarrito.appendChild(li);
+      suma += item.precio;
+    });
+    total.textContent = suma.toFixed(2);
+  }
+
+  // Buscador
   const btnBuscar = document.getElementById('btnBuscar');
   const buscador = document.getElementById('buscador');
 
