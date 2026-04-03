@@ -435,39 +435,61 @@ img {
     transform: translateY(0);
   }
 }
-.carrito {
-  position: fixed;
-  top: 0;
-  right: -350px;
-  width: 300px;
-  height: 100%;
-  background: white;
-  box-shadow: -4px 0 10px rgba(0,0,0,0.2);
-  padding: 20px;
-  transition: right 0.3s ease;
-  z-index: 1000;
+:root {
+  --color-fondo: #eef5ea;
+  --color-primario: #1f1f1f;
+  --color-verde: #6f8f5f;
+  --color-verde-oscuro: #3f7f35;
+  --color-blanco: #ffffff;
+  --sombra-suave: 0 4px 12px rgba(0,0,0,0.08);
 }
 
-.carrito.mostrar {
-  right: 0;
-}
+/* RESET */
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: Arial, Helvetica, sans-serif; background-color: var(--color-fondo); color:#222; line-height:1.6; }
 
-.carrito h4 {
-  margin-bottom: 15px;
-}
+/* NAVBAR */
+.custom-navbar { background-color: var(--color-verde); padding:10px 15px; }
+.logo-left { margin-left:5px; }
+.brand-center { position:absolute; left:50%; transform:translateX(-50%); font-size:1.8rem; font-weight:bold; color:white; letter-spacing:1px; }
+.icon-nav { font-size:1.3rem; color:white; cursor:pointer; transition: transform 0.2s ease,color 0.2s ease; }
+.icon-nav:hover { transform:scale(1.2); color:#caffb8; }
+.navbar-toggler { border:none; }
+.navbar-toggler-icon { filter: invert(1); }
 
-.carrito ul {
-  list-style: none;
-  padding-left: 0;
-  max-height: 300px;
-  overflow-y: auto;
-}
+/* BANNER */
+.banner { background-color: var(--color-verde); min-height:60vh; display:flex; align-items:center; justify-content:center; overflow:hidden; animation: caer 1.5s ease-out forwards; }
+.banner-contenido { display:flex; align-items:center; justify-content:space-between; width:100%; }
+.banner-texto { color:white; max-width:500px; margin-left:30px; }
+.banner-texto h1 { font-size:2.5rem; margin-bottom:15px; }
+.banner-texto p { font-size:1.2rem; }
+.banner-img { display:flex; justify-content:flex-end; margin-right:-10px; }
+.banner-img img { max-width:500px; border-radius:10px; animation:derretir 2s ease forwards; }
 
-.carrito ul li {
-  margin-bottom: 10px;
-}
+/* ANIMACIONES */
+@keyframes caer { 0% { transform:translateY(-300px); opacity:0; } 100% { transform:translateY(0); opacity:1; } }
+@keyframes derretir { 0% { transform:scaleY(0) translateY(-150px); filter: blur(15px); } 50% { transform:scaleY(1.3) translateY(20px); } 75% { transform:scaleY(0.9); } 100% { transform:scaleY(1); filter: blur(0); } }
 
-.carrito button {
-  margin-top: 10px;
-  width: 100%;
-}
+/* PRODUCTO */
+.producto-card { border:none; border-radius:14px; overflow:hidden; box-shadow: var(--sombra-suave); transition: transform .25s ease, box-shadow .25s ease; }
+.producto-card:hover { transform:translateY(-6px); box-shadow: 0 10px 22px rgba(0,0,0,0.12); }
+.producto-card img { height:260px; object-fit:cover; }
+.btn-success { background-color: var(--color-verde); border-color: var(--color-verde); }
+.btn-success:hover { background-color: var(--color-verde-oscuro); border-color: var(--color-verde-oscuro); }
+
+/* CARRITO */
+.carrito { position: fixed; top:60px; right:-350px; width:300px; height:calc(100% - 60px); background:white; box-shadow:-4px 0 10px rgba(0,0,0,0.2); padding:20px; transition:right 0.3s ease; z-index:1000; }
+.carrito.mostrar { right:0; }
+.carrito h4 { margin-bottom:15px; }
+.carrito ul { list-style:none; padding-left:0; max-height:calc(100vh - 200px); overflow-y:auto; }
+.carrito ul li { margin-bottom:10px; }
+.carrito button { margin-top:10px; width:100%; }
+
+/* FOOTER */
+footer { margin-top:80px; background: linear-gradient(90deg,#3f7f35,#6bca53); border-top-left-radius:14px; border-top-right-radius:14px; box-shadow:0 -4px 12px rgba(0,0,0,0.08); font-family:'Arial Black',sans-serif; }
+footer a { color:white; font-weight:bold; transition:color 0.2s ease; }
+footer a:hover { color:#caffb8; text-decoration:underline; }
+
+/* RESPONSIVE */
+@media(max-width:768px){ .brand-center{ font-size:1.3rem; } .banner-contenido{ flex-direction:column; text-align:center; padding:0 20px; } .banner-texto{ margin-left:0; } .banner-img{ margin-right:0; } .banner-img img{ max-width:250px; } }
+@media(max-width:480px){ h1{ font-size:1.6rem; } }
