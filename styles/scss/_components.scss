@@ -1,0 +1,25 @@
+@use "variables" as *;
+
+.card {
+  border-radius: $radius;
+  box-shadow: $sombra;
+
+  img {
+    object-fit: cover;
+  }
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+}
+@use "variables" as *;
+
+.btn-success {
+  background-color: $verde;
+  border-color: $verde;
+
+  &:hover {
+    background-color: $verde-oscuro;
+    border-color: $verde-oscuro;
+  }
+}

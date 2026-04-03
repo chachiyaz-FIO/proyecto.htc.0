@@ -1,0 +1,16 @@
+@use "variables" as *;
+
+$rounded: true;
+
+.form-control {
+  padding: 10px;
+
+  @if $rounded {
+    border-radius: 10px;
+  }
+
+  &:focus {
+    border-color: $verde;
+    box-shadow: 0 0 0 .15rem rgba($verde, .25);
+  }
+}
